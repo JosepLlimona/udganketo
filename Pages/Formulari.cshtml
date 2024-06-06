@@ -18,27 +18,32 @@
         <label>Pregunta: </label>
         <input type="text" itemid="Question" name="Question" asp-for="Question" required/>
     </div>
-    <div id="dynamicInputs">
+    <div id="Options">
         <!-- Aquí se agregarán los inputs dinámicos -->
     </div>
-    <button type="button" onclick="agregarInput()">Agregar Input</button>
+    <button type="button" onclick="agregarOpcion()">Agregar Input</button>
 </form>
 
 <script>
-    let contadorInputs = 0;
+    let contadorOpciones = 0;
 
-    function agregarInput() {
-        contadorInputs++;
-        const divInputs = document.getElementById('dynamicInputs');
+    function agregarOpcion() {
+        contadorOpciones++;
+        const divOpciones = document.getElementById('Options');
 
-        const nuevoInput = document.createElement('div');
-        nuevoInput.innerHTML = `<input type="text" name="DynamicInput${contadorInputs}" placeholder="Input ${contadorInputs}"> <button type="button" onclick="eliminarInput(this)">Eliminar</button>`;
-
-        divInputs.appendChild(nuevoInput);
+        const nuevaOpcion = document.createElement('div');
+        nuevaOpcion.innerHTML = `
+            <label for="option${contadorOpciones}">Opción ${contadorOpciones}:</label>
+            <input type="text" id="option${contadorOpciones}" name="Options[${contadorOpciones - 1}].Name" required>
+            <input type="hidden" name="Options[${contadorOpciones - 1}].Id" value="${contadorOpciones}">
+            <input type="hidden" name="Options[${contadorOpciones - 1}].Votes" value="0">
+            <button type="button" onclick="eliminarOpcion(this)">Eliminar</button>
+        `;
+        divOpciones.appendChild(nuevaOpcion);
     }
 
-    function eliminarInput(elemento) {
-        const divInputs = document.getElementById('dynamicInputs');
-        divInputs.removeChild(elemento.parentNode);
+    function eliminarOpcion(elemento) {
+        const divOpciones = document.getElementById('options');
+        divOpciones.removeChild(elemento.parentNode);
     }
 </script>

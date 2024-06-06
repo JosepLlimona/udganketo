@@ -16,7 +16,7 @@ namespace udganketo.Pages
         public string Title { get; set; }
         public string Description {  get; set; }
         public string Question {  get; set; }
-        public Options[] Options { get; set; }
+        public List<Options> Options { get; set; }
 
         public async Task<IActionResult> OnPostAsync()
         {
