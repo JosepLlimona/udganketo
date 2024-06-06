@@ -24,9 +24,11 @@ public class Startup
         // Crear una instancia del cliente de Cosmos y registrarlo como un servicio singleton
         CosmosClient cosmosClient = new CosmosClient(cosmosDbConnectionString);
         services.AddSingleton(cosmosClient);
+        services.AddSingleton<CosmosDbService>();
 
         // Registrar otros servicios necesarios
         services.AddControllers();
+        services.AddRazorPages();
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

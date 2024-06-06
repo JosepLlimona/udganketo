@@ -9,3 +9,11 @@
     <p>Hola!</p>
     <p>This is a test</p>
 </div>
+<div>
+    <ul>
+        @foreach (var item in Model.Items)
+        {
+            <li>@item.Title</li>
+        }
+    </ul>
+</div>
