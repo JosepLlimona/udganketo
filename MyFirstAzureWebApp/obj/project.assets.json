@@ -13,9 +13,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Josep\\Documents\\GitHub\\udganketo\\MyFirstAzureWebApp\\MyFirstAzureWebApp.csproj",
-      "projectName": "MyFirstAzureWebApp",
-      "projectPath": "C:\\Users\\Josep\\Documents\\GitHub\\udganketo\\MyFirstAzureWebApp\\MyFirstAzureWebApp.csproj",
+      "projectUniqueName": "C:\\Users\\Josep\\Documents\\GitHub\\udganketo\\MyFirstAzureWebApp\\udganketo.csproj",
+      "projectName": "udganketo",
+      "projectPath": "C:\\Users\\Josep\\Documents\\GitHub\\udganketo\\MyFirstAzureWebApp\\udganketo.csproj",
       "packagesPath": "C:\\Users\\Josep\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Josep\\Documents\\GitHub\\udganketo\\MyFirstAzureWebApp\\obj\\",
       "projectStyle": "PackageReference",
