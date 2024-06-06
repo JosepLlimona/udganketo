@@ -12,7 +12,6 @@ namespace udganketo.Pages
         {
             _cosmosDbService = cosmosDbService;
         }
-
         public string Title { get; set; }
         public string Description {  get; set; }
         public string Question {  get; set; }
@@ -20,9 +19,14 @@ namespace udganketo.Pages
 
         public async Task<IActionResult> OnPostAsync()
         {
+            int lastId = await _cosmosDbService.GetLastItemIdAsync();
+
+            // Generar el próximo ID incrementándolo en uno
+            int nextId = lastId + 1;
             var newItem = new MyItem
             {
-                Id = Guid.NewGuid().ToString(),
+
+                Id = nextId.ToString(),
                 Title = Title,
                 Description = Description,
                 Question = Question,
