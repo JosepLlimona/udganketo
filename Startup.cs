@@ -1,6 +1,7 @@
 ﻿using Microsoft.Azure.Cosmos;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System.Diagnostics;
 
 public class Startup
 {
@@ -20,6 +21,7 @@ public class Startup
         {
             throw new InvalidOperationException("La cadena de conexión de Cosmos DB no está configurada.");
         }
+        else { Debug.WriteLine(cosmosDbConnectionString); }
 
         // Crear una instancia del cliente de Cosmos y registrarlo como un servicio singleton
         CosmosClient cosmosClient = new CosmosClient(cosmosDbConnectionString);
