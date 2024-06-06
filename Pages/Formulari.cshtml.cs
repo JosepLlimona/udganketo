@@ -11,6 +11,7 @@ namespace udganketo.Pages
         public FormulariModel(CosmosDbService cosmosDbService)
         {
             _cosmosDbService = cosmosDbService;
+            Options = new List<Options>();
         }
         public string Title { get; set; }
         public string Description {  get; set; }
@@ -25,7 +26,6 @@ namespace udganketo.Pages
             int nextId = lastId + 1;
             var newItem = new MyItem
             {
-
                 Id = nextId.ToString(),
                 Title = Title,
                 Description = Description,
