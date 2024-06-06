@@ -4,7 +4,7 @@ using Microsoft.Extensions.Logging; // Asegúrate de agregar este using si no lo
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace udganketo.Pages
+namespace MyFirstAzureWebApp.Pages
 {
     public class IndexModel : PageModel
     {
