@@ -14,23 +14,8 @@ public class Startup
 
     public void ConfigureServices(IServiceCollection services)
     {
-        // Leer la cadena de conexión desde la variable de entorno
-        var cosmosDbConnectionString = Environment.GetEnvironmentVariable("COSMOSDB_CONNECTION_STRING");
-
-        if (string.IsNullOrEmpty(cosmosDbConnectionString))
-        {
-            throw new InvalidOperationException("La cadena de conexión de Cosmos DB no está configurada.");
-        }
-        else { Debug.WriteLine(cosmosDbConnectionString); }
-
-        // Crear una instancia del cliente de Cosmos y registrarlo como un servicio singleton
-        CosmosClient cosmosClient = new CosmosClient(cosmosDbConnectionString);
-        services.AddSingleton(cosmosClient);
-        services.AddScoped<CosmosDbService>();
-
-        // Registrar otros servicios necesarios
-        services.AddControllers();
         services.AddRazorPages();
+        services.AddScoped<CosmosDbService>();
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -55,9 +40,7 @@ public class Startup
 
         app.UseEndpoints(endpoints =>
         {
-            endpoints.MapControllerRoute(
-                name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+            endpoints.MapRazorPages();
         });
     }
 }

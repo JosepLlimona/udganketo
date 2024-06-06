@@ -4,13 +4,15 @@ using System.Threading.Tasks;
 
 public class CosmosDbService
 {
-    private readonly CosmosClient _cosmosClient;
     private readonly Container _container;
 
-    public CosmosDbService(CosmosClient cosmosClient)
+    public CosmosDbService()
     {
-        _cosmosClient = cosmosClient;
-        _container = _cosmosClient.GetContainer("udganketo", "Polls");
+        var cosmosDbConnecxtionString = Environment.GetEnvironmentVariable("COSMOSDB_CONNECTION_STRING");
+        var databaseName = "udganketo";
+        var containerName = "Polls";
+        var cosmosClient = new CosmosClient(cosmosDbConnecxtionString);
+        _container = cosmosClient.GetContainer(databaseName, containerName);
     }
 
     public async Task<List<MyItem>> GetItemsAsync()
