@@ -1,9 +1,13 @@
 using Microsoft.AspNetCore.SignalR;
 
+
 namespace SignalRChat.Hubs
 {
-    public async Task Answer(string name, string answerUuid) 
+    public class UdgAnketoHub : Hub
     {
-        await Clients.All.SendAsync("answer", name, answerUuid);
+        public async Task SendMessage(string user, string message)
+        {
+            await Clients.All.SendAsync("ReceiveMessage", user, message);
+        }
     }
 }
