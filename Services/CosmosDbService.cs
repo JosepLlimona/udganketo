@@ -39,6 +39,23 @@ namespace udganketo.Services
             return items;
         }
 
+        public async Task<int> GetLastItemIdAsync()
+        {
+            var query = new QueryDefinition("SELECT TOP 1 VALUE MAX(c.id) FROM c");
+            var iterator = _container.GetItemQueryIterator<int>(query, requestOptions: new QueryRequestOptions
+            {
+                MaxItemCount = 1 // Solo necesitamos obtener el primer elemento
+            });
+
+            if (iterator.HasMoreResults)
+            {
+                var result = await iterator.ReadNextAsync();
+                return result.FirstOrDefault(); // Devuelve el primer (y único) ID
+            }
+
+            return 0; // Si no hay resultados, devuelve 0
+        }
+
         public async Task InsertItemAsync(MyItem newItem)
         {
             await _container.CreateItemAsync(newItem);
