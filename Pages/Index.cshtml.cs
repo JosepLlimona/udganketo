@@ -1,28 +1,32 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Logging; // Asegúrate de agregar este using si no lo tienes
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
-namespace MyFirstAzureWebApp.Pages;
-
-public class IndexModel : PageModel
+namespace MyFirstAzureWebApp.Pages
 {
-    private readonly ILogger<IndexModel> _logger;
-    private readonly CosmosDbService _cosmosDbService;
-
-    public IndexModel(ILogger<IndexModel> logger, CosmosDbService cosmosDbService)
+    public class IndexModel : PageModel
     {
-        _logger = logger;
-        _cosmosDbService = cosmosDbService;
-    }
+        private readonly ILogger<IndexModel> _logger;
+        private readonly CosmosDbService _cosmosDbService;
 
-    public List<MyItem> Items { get; private set; }
+        public IndexModel(ILogger<IndexModel> logger, CosmosDbService cosmosDbService)
+        {
+            _logger = logger;
+            _cosmosDbService = cosmosDbService;
+        }
 
-    public async Task OnGetAsync()
-    {
-        Items = await _cosmosDbService.GetItemsAsync();
-    }
+        public List<MyItem> Items { get; private set; }
 
-    public void OnGet()
-    {
+        public async Task OnGetAsync()
+        {
+            Items = await _cosmosDbService.GetItemsAsync();
+        }
 
+        public void OnGet()
+        {
+
+        }
     }
 }
