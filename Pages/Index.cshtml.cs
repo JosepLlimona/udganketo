@@ -25,10 +25,5 @@ namespace MyFirstAzureWebApp.Pages
         {
             Items = await _cosmosDbService.GetItemsAsync();
         }
-
-        public void OnGet()
-        {
-
-        }
     }
 }
