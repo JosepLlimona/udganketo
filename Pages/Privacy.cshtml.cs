@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace udganketo.Pages;
+namespace MyFirstAzureWebApp.Pages;
 
 public class PrivacyModel : PageModel
 {
