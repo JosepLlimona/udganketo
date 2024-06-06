@@ -17,7 +17,7 @@ namespace udganketo
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
-            services.AddScoped<CosmosDbService>();
+            services.AddScoped<udganketo.CosmosDbService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
