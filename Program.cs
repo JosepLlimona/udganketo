@@ -8,15 +8,9 @@ using BlazorSignalRApp.Hubs;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddResponseCompression(opts =>
-{
-   opts.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(
-         new[] { "application/octet-stream" });
-});
 builder.Services.AddRazorPages();
 builder.Services.AddScoped<CosmosDbService>();
 builder.Services.AddSignalR();
-builder.Services.AddServerSideBlazor();
 
 var app = builder.Build();
 
@@ -37,7 +31,6 @@ app.UseAuthorization();
 
 app.MapRazorPages();
 
-app.UseResponseCompression();
 app.MapHub<ChatHub>("/chathub");
 
 app.Run();
