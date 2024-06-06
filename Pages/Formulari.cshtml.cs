@@ -13,9 +13,13 @@ namespace udganketo.Pages
             _cosmosDbService = cosmosDbService;
             Options = new List<Options>();
         }
+        [BindProperty]
         public string Title { get; set; }
+        [BindProperty]
         public string Description {  get; set; }
+        [BindProperty]
         public string Question {  get; set; }
+        [BindProperty]
         public List<Options> Options { get; set; }
 
         public async Task<IActionResult> OnPostAsync()
@@ -26,11 +30,11 @@ namespace udganketo.Pages
             int nextId = lastId + 1;
             var newItem = new MyItem
             {
-                Id = nextId.ToString(),
-                Title = Title,
-                Description = Description,
-                Question = Question,
-                Options = Options
+                id = nextId.ToString(),
+                title = Title,
+                description = Description,
+                question = Question,
+                options = Options
             };
 
             await _cosmosDbService.InsertItemAsync(newItem);

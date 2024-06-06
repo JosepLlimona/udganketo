@@ -64,18 +64,18 @@ namespace udganketo.Services
 
     public class MyItem
     {
-        public string Id { get; set; }
-        public string Title { get; set; }
-        public string Description { get; set; }
-        public string Question {  get; set; }
+        public string id { get; set; }
+        public string title { get; set; }
+        public string description { get; set; }
+        public string question {  get; set; }
 
-        public List<Options> Options { get; set; }
+        public List<Options> options { get; set; }
         // Otros campos necesarios
     }
 
     public class Options
     {
-        public string Id { get; set; }
+        public string id { get; set; }
         public string name { get; set; }
         public int votes { get; set; }
     }
