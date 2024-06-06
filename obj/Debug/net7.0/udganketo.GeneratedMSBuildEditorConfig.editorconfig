@@ -16,10 +16,6 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\Josep\Documents\GitHub\udganketo
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/Josep/Documents/GitHub/udganketo/Pages/OldAnketoDetail.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcT2xkQW5rZXRvRGV0YWlsLnJhem9y
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/Josep/Documents/GitHub/udganketo/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -30,6 +26,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Josep/Documents/GitHub/udganketo/Pages/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Josep/Documents/GitHub/udganketo/Pages/Poll.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUG9sbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Josep/Documents/GitHub/udganketo/Pages/Privacy.cshtml]
