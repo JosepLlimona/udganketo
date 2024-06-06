@@ -38,6 +38,11 @@ namespace udganketo.Services
 
             return items;
         }
+
+        public async Task InsertItemAsync(MyItem newItem)
+        {
+            await _container.CreateItemAsync(newItem);
+        }
     }
 
     public class MyItem

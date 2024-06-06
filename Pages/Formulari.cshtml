@@ -1,0 +1,44 @@
+﻿@page
+@model udganketo.Pages.FormulariModel
+@{
+    ViewData["Title"] = "Crear enquesta";
+}
+
+<h1>Crear una enquesta</h1>
+<form method = "post">
+    <div>
+        <label>Titol: </label>
+        <input type="text" itemid="Title" name="Title" asp-for="Title" required/>
+    </div>
+    <div>
+        <label>Descripcio: </label>
+        <input type="text" itemid="Description" name="Description" asp-for="Description" required/>
+    </div>
+    <div>
+        <label>Pregunta: </label>
+        <input type="text" itemid="Question" name="Question" asp-for="Question" required/>
+    </div>
+    <div id="dynamicInputs">
+        <!-- Aquí se agregarán los inputs dinámicos -->
+    </div>
+    <button type="button" onclick="agregarInput()">Agregar Input</button>
+</form>
+
+<script>
+    let contadorInputs = 0;
+
+    function agregarInput() {
+        contadorInputs++;
+        const divInputs = document.getElementById('dynamicInputs');
+
+        const nuevoInput = document.createElement('div');
+        nuevoInput.innerHTML = `<input type="text" name="DynamicInput${contadorInputs}" placeholder="Input ${contadorInputs}"> <button type="button" onclick="eliminarInput(this)">Eliminar</button>`;
+
+        divInputs.appendChild(nuevoInput);
+    }
+
+    function eliminarInput(elemento) {
+        const divInputs = document.getElementById('dynamicInputs');
+        divInputs.removeChild(elemento.parentNode);
+    }
+</script>
