@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace MyFirstAzureWebApp
+namespace udganketo.Services
 {
     public class CosmosDbService
     {

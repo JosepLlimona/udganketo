@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging; // Asegúrate de agregar este using si no lo tienes
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using udganketo.Services;
 
 namespace MyFirstAzureWebApp.Pages
 {
@@ -15,6 +16,7 @@ namespace MyFirstAzureWebApp.Pages
         {
             _logger = logger;
             _cosmosDbService = cosmosDbService;
+            Items = new List<MyItem>();
         }
 
         public List<MyItem> Items { get; private set; }

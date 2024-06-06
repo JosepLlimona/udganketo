@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Diagnostics;
+using udganketo.Services;
 
 namespace MyFirstAzureWebApp
 {
@@ -17,7 +18,7 @@ namespace MyFirstAzureWebApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
-            services.AddScoped<MyFirstAzureWebApp.CosmosDbService>();
+            services.AddScoped<CosmosDbService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
