@@ -1,7 +1,12 @@
+using MyFirstAzureWebApp;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Hosting;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Host.UseStartup<Startup>();
 
 var app = builder.Build();
 
