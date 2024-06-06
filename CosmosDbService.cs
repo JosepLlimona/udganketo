@@ -10,7 +10,7 @@ public class CosmosDbService
     public CosmosDbService(CosmosClient cosmosClient)
     {
         _cosmosClient = cosmosClient;
-        _container = _cosmosClient.GetContainer("YourDatabaseName", "YourContainerName");
+        _container = _cosmosClient.GetContainer("udganketo", "Polls");
     }
 
     public async Task<List<MyItem>> GetItemsAsync()
