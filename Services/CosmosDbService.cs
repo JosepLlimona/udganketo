@@ -44,6 +44,17 @@ namespace udganketo.Services
     {
         public string Id { get; set; }
         public string Title { get; set; }
+        public string Description { get; set; }
+        public string Question {  get; set; }
+
+        public Options[] Options { get; set; }
         // Otros campos necesarios
+    }
+
+    public class Options
+    {
+        public string Id { get; set; }
+        public string name { get; set; }
+        public int votes { get; set; }
     }
 }
