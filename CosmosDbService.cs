@@ -2,43 +2,46 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-public class CosmosDbService
+namespace udganketo
 {
-    private readonly Container _container;
-
-    public CosmosDbService()
+    public class CosmosDbService
     {
-        var cosmosDbConnecxtionString = Environment.GetEnvironmentVariable("COSMOSDB_CONNECTION_STRING");
-        var databaseName = "udganketo";
-        var containerName = "Polls";
-        var cosmosClient = new CosmosClient(cosmosDbConnecxtionString);
-        _container = cosmosClient.GetContainer(databaseName, containerName);
-    }
+        private readonly Container _container;
 
-    public async Task<List<MyItem>> GetItemsAsync()
-    {
-        var sqlQueryText = "SELECT * FROM c";
-        QueryDefinition queryDefinition = new QueryDefinition(sqlQueryText);
-        FeedIterator<MyItem> queryResultSetIterator = _container.GetItemQueryIterator<MyItem>(queryDefinition);
-
-        List<MyItem> items = new List<MyItem>();
-
-        while (queryResultSetIterator.HasMoreResults)
+        public CosmosDbService()
         {
-            FeedResponse<MyItem> currentResultSet = await queryResultSetIterator.ReadNextAsync();
-            foreach (var item in currentResultSet)
-            {
-                items.Add(item);
-            }
+            var cosmosDbConnecxtionString = Environment.GetEnvironmentVariable("COSMOSDB_CONNECTION_STRING");
+            var databaseName = "udganketo";
+            var containerName = "Polls";
+            var cosmosClient = new CosmosClient(cosmosDbConnecxtionString);
+            _container = cosmosClient.GetContainer(databaseName, containerName);
         }
 
-        return items;
-    }
-}
+        public async Task<List<MyItem>> GetItemsAsync()
+        {
+            var sqlQueryText = "SELECT * FROM c";
+            QueryDefinition queryDefinition = new QueryDefinition(sqlQueryText);
+            FeedIterator<MyItem> queryResultSetIterator = _container.GetItemQueryIterator<MyItem>(queryDefinition);
 
-public class MyItem
-{
-    public string Id { get; set; }
-    public string Title { get; set; }
-    // Otros campos necesarios
+            List<MyItem> items = new List<MyItem>();
+
+            while (queryResultSetIterator.HasMoreResults)
+            {
+                FeedResponse<MyItem> currentResultSet = await queryResultSetIterator.ReadNextAsync();
+                foreach (var item in currentResultSet)
+                {
+                    items.Add(item);
+                }
+            }
+
+            return items;
+        }
+    }
+
+    public class MyItem
+    {
+        public string Id { get; set; }
+        public string Title { get; set; }
+        // Otros campos necesarios
+    }
 }
