@@ -15,7 +15,7 @@ public class Startup
     public void ConfigureServices(IServiceCollection services)
     {
         // Leer la cadena de conexión desde la variable de entorno
-        var cosmosDbConnectionString = Environment.GetEnvironmentVariable("CosmosDB:ConnectionString");
+        var cosmosDbConnectionString = Environment.GetEnvironmentVariable("COSMOSDB_CONNECTION_STRING");
 
         if (string.IsNullOrEmpty(cosmosDbConnectionString))
         {
