@@ -22,6 +22,7 @@ namespace udganketo.Pages
         {
             var newItem = new MyItem
             {
+                Id = Guid.NewGuid().ToString(),
                 Title = Title,
                 Description = Description,
                 Question = Question,
