@@ -13,9 +13,13 @@ namespace udganketo.Pages
             _cosmosDbService = cosmosDbService;
             Options = new List<Options>();
         }
+        [BindProperty]
         public string Title { get; set; }
+        [BindProperty]
         public string Description {  get; set; }
+        [BindProperty]
         public string Question {  get; set; }
+        [BindProperty]
         public List<Options> Options { get; set; }
 
         public async Task<IActionResult> OnPostAsync()
