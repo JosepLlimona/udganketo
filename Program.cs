@@ -16,6 +16,7 @@ builder.Services.AddResponseCompression(opts =>
 builder.Services.AddRazorPages();
 builder.Services.AddScoped<CosmosDbService>();
 builder.Services.AddSignalR();
+builder.Services.AddServerSideBlazor();
 
 var app = builder.Build();
 
