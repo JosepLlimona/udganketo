@@ -12,7 +12,6 @@ namespace udganketo.Services
         public CosmosDbService()
         {
             var cosmosDbConnecxtionString = Environment.GetEnvironmentVariable("COSMOSDB_CONNECTION_STRING");
-            Console.WriteLine("COSMOSDB_CONNECTION_STRING: " + cosmosDbConnecxtionString); // Agrega esta línea para imprimir el valor
             var databaseName = "udganketo";
             var containerName = "Polls";
             var cosmosClient = new CosmosClient(cosmosDbConnecxtionString);
