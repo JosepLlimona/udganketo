@@ -2,12 +2,20 @@ using MyFirstAzureWebApp;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using udganketo.Services;
+using Microsoft.AspNetCore.ResponseCompression;
+using BlazorSignalRApp.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddResponseCompression(opts =>
+{
+   opts.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(
+         new[] { "application/octet-stream" });
+});
 builder.Services.AddRazorPages();
 builder.Services.AddScoped<CosmosDbService>();
+builder.Services.AddSignalR();
 
 var app = builder.Build();
 
@@ -27,5 +35,8 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapRazorPages();
+
+app.UseResponseCompression();
+app.MapHub<ChatHub>("/chathub");
 
 app.Run();
