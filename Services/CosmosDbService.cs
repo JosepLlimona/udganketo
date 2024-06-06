@@ -38,6 +38,11 @@ namespace udganketo.Services
 
             return items;
         }
+
+        public async Task InsertItemAsync(MyItem newItem)
+        {
+            await _container.CreateItemAsync(newItem);
+        }
     }
 
     public class MyItem
@@ -47,7 +52,7 @@ namespace udganketo.Services
         public string Description { get; set; }
         public string Question {  get; set; }
 
-        public Options[] Options { get; set; }
+        public List<Options> Options { get; set; }
         // Otros campos necesarios
     }
 

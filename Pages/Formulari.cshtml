@@ -1,0 +1,51 @@
+﻿@page
+@model udganketo.Pages.FormulariModel
+@{
+    ViewData["Title"] = "Crear enquesta";
+}
+
+<h1>Crear una enquesta</h1>
+<form method = "post">
+    <div>
+        <label>Titol: </label>
+        <input type="text" itemid="Title" name="Title" asp-for="Title" required/>
+    </div>
+    <div>
+        <label>Descripcio: </label>
+        <input type="text" itemid="Description" name="Description" asp-for="Description" required/>
+    </div>
+    <div>
+        <label>Pregunta: </label>
+        <input type="text" itemid="Question" name="Question" asp-for="Question" required/>
+    </div>
+    <div id="Options">
+        <!-- Aquí se agregarán los inputs dinámicos -->
+    </div>
+    <button type="button" onclick="agregarOpcion()">Agregar Input</button>
+
+    <button type="submit">Enviar</button>
+</form>
+
+<script>
+    let contadorOpciones = 0;
+
+    function agregarOpcion() {
+        contadorOpciones++;
+        const divOpciones = document.getElementById('Options');
+
+        const nuevaOpcion = document.createElement('div');
+        nuevaOpcion.innerHTML = `
+            <label for="option${contadorOpciones}">Opción ${contadorOpciones}:</label>
+            <input type="text" id="option${contadorOpciones}" name="Options[${contadorOpciones - 1}].Name" required>
+            <input type="hidden" name="Options[${contadorOpciones - 1}].Id" value="${contadorOpciones}">
+            <input type="hidden" name="Options[${contadorOpciones - 1}].Votes" value="0">
+            <button type="button" onclick="eliminarOpcion(this)">Eliminar</button>
+        `;
+        divOpciones.appendChild(nuevaOpcion);
+    }
+
+    function eliminarOpcion(elemento) {
+        const divOpciones = document.getElementById('options');
+        divOpciones.removeChild(elemento.parentNode);
+    }
+</script>
