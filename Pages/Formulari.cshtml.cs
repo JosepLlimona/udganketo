@@ -26,11 +26,11 @@ namespace udganketo.Pages
             int nextId = lastId + 1;
             var newItem = new MyItem
             {
-                Id = nextId.ToString(),
-                Title = Title,
-                Description = Description,
-                Question = Question,
-                Options = Options
+                id = nextId.ToString(),
+                title = Title,
+                description = Description,
+                question = Question,
+                options = Options
             };
 
             await _cosmosDbService.InsertItemAsync(newItem);

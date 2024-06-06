@@ -13,8 +13,8 @@
     <ul>
         @foreach (var item in Model.Items)
         {
-            <li>@item.Title - @item.Question</li>
-            @foreach (var option in item.Options)
+            <li>@item.title - @item.question</li>
+            @foreach (var option in item.options)
             {
                 <li>-@option.name = @option.votes</li>
             }
