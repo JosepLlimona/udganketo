@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Josep\\Documents\\GitHub\\udganketo\\MyFirstAzureWebApp\\udganketo.csproj": {}
+    "C:\\Users\\Josep\\Documents\\GitHub\\udganketo\\udganketo\\udganketo.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Josep\\Documents\\GitHub\\udganketo\\MyFirstAzureWebApp\\udganketo.csproj": {
+    "C:\\Users\\Josep\\Documents\\GitHub\\udganketo\\udganketo\\udganketo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Josep\\Documents\\GitHub\\udganketo\\MyFirstAzureWebApp\\udganketo.csproj",
+        "projectUniqueName": "C:\\Users\\Josep\\Documents\\GitHub\\udganketo\\udganketo\\udganketo.csproj",
         "projectName": "udganketo",
-        "projectPath": "C:\\Users\\Josep\\Documents\\GitHub\\udganketo\\MyFirstAzureWebApp\\udganketo.csproj",
+        "projectPath": "C:\\Users\\Josep\\Documents\\GitHub\\udganketo\\udganketo\\udganketo.csproj",
         "packagesPath": "C:\\Users\\Josep\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Josep\\Documents\\GitHub\\udganketo\\MyFirstAzureWebApp\\obj\\",
+        "outputPath": "C:\\Users\\Josep\\Documents\\GitHub\\udganketo\\udganketo\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Josep\\AppData\\Roaming\\NuGet\\NuGet.Config",
