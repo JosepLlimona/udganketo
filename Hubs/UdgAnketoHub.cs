@@ -1,8 +1,6 @@
 using Microsoft.AspNetCore.SignalR;
 
-namespace BlazorSignalRApp.Hubs;
-
-public class UdgAnketoHub : Hub
+namespace SignalRChat.Hubs
 {
     public async Task Answer(string name, string answerUuid) 
     {

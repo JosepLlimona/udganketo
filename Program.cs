@@ -1,9 +1,5 @@
-using MyFirstAzureWebApp;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Hosting;
+using SignalRChat.Hubs;
 using udganketo.Services;
-using Microsoft.AspNetCore.ResponseCompression;
-using BlazorSignalRApp.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
 

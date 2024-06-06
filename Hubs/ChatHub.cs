@@ -1,11 +1,12 @@
 using Microsoft.AspNetCore.SignalR;
 
-namespace BlazorSignalRApp.Hubs;
-
-public class ChatHub : Hub
+namespace SignalRChat.Hubs
 {
-    public async Task SendMessage(string user, string message)
+    public class ChatHub : Hub
     {
-        await Clients.All.SendAsync("ReceiveMessage", user, message);
+        public async Task SendMessage(string user, string message)
+        {
+            await Clients.All.SendAsync("ReceiveMessage", user, message);
+        }
     }
 }
