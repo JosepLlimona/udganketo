@@ -98,7 +98,7 @@
                             xhr.setRequestHeader("XSRF-TOKEN",
                                 $('input:hidden[name="__RequestVerificationToken"]').val());
                         },
-                        url: "/",
+                        url: "/?handler=Votes",
                         data: dataJson,
                         success: function (data) {
                             console.log(data);

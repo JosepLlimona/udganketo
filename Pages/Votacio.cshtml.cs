@@ -29,7 +29,7 @@ namespace udganketo.Pages
             public string optionId { get; set; }
         }
 
-        public async Task<IActionResult> OnPost([FromBody] PostRequestModel postRequestModel)
+        public async Task<IActionResult> OnPostVotes([FromBody] PostRequestModel postRequestModel)
         {
             Trace.WriteLine("Entra " + " " + postRequestModel.id + " " + postRequestModel.optionId);
             MyItem item = await _cosmosDbService.SelectItemAsync(postRequestModel.id);
