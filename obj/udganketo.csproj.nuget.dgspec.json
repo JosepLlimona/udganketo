@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Josep\\Documents\\GitHub\\udganketo\\udganketo.csproj": {}
+    "D:\\Documents\\PROJECTES\\Propis\\udganketo\\udganketo.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Josep\\Documents\\GitHub\\udganketo\\udganketo.csproj": {
+    "D:\\Documents\\PROJECTES\\Propis\\udganketo\\udganketo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Josep\\Documents\\GitHub\\udganketo\\udganketo.csproj",
+        "projectUniqueName": "D:\\Documents\\PROJECTES\\Propis\\udganketo\\udganketo.csproj",
         "projectName": "udganketo",
-        "projectPath": "C:\\Users\\Josep\\Documents\\GitHub\\udganketo\\udganketo.csproj",
-        "packagesPath": "C:\\Users\\Josep\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Josep\\Documents\\GitHub\\udganketo\\obj\\",
+        "projectPath": "D:\\Documents\\PROJECTES\\Propis\\udganketo\\udganketo.csproj",
+        "packagesPath": "C:\\Users\\Roger Roca JOCS\\.nuget\\packages\\",
+        "outputPath": "D:\\Documents\\PROJECTES\\Propis\\udganketo\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Josep\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Roger Roca JOCS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -68,7 +72,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     }
