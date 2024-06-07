@@ -94,7 +94,7 @@
                     });
                     fetch("/", {
                         method: "POST",
-                        body: JSON.stringify(dataJson),
+                        body: dataJson,
                         headers: {
                             'RequestVerificationToken': document.getElementsByName("__RequestVerificationToken")[0].value,
                             'Accept': "*/*",
