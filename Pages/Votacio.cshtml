@@ -59,9 +59,7 @@
 
     function bindConnectionMessage(connection) {
         var answerCallback = function (answerUuid) {
-            console.log("Arriba answerUuid1" + " " + answerUuid);
             const option = survey.options.find(opt => opt.id == answerUuid);
-            console.log("Arriba answerUuid2" + " " + answerUuid + " " + option + " " + survey.options);
             if (option) {
                 option.votes++;
                 updateProgressBars(survey);
@@ -82,12 +80,12 @@
 
     function onConnected(connection) {
         console.log("connection started");
-        connection.send("answer", "test").catch((e) => console.log(e));
+        connection.invoke("JoinGroup", survey.id);
         document.getElementById('submit').addEventListener('click', function (event) {
             const selectedRadio = document.querySelector('input[name="exampleRadios"]:checked');
             if (selectedRadio) {
                 console.log("send from" + " value " + selectedRadio.value);
-                connection.send("answer", selectedRadio.value).catch((e) => console.log(e));
+                connection.send("answer", survey.id, selectedRadio.value).catch((e) => console.log(e));
             } else {
                 alert("Please select an option.");
             }
