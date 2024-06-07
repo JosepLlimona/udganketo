@@ -94,10 +94,14 @@
                     $.ajax({
                         type: "POST",
                         url: "/Votacio/OnUpdateVotes",
-                        data: dataJson,
+                        data: {
+                            id: survey.id,
+                            optionId: selectedRadio.value
+                        },
                         success: function (data) {
                             console.log("ha anat be");
                         },
+                        contentType: 'application/x-www-form-urlencoded'
                     });
                 });
             } else {

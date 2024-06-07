@@ -27,7 +27,6 @@ app.UseAuthorization();
 
 app.MapRazorPages();
 
-// app.MapHub<ChatHub>("/chatHub");
 app.MapHub<UdgAnketoHub>("/udganketohub");
 
 app.Run();
