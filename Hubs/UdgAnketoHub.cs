@@ -5,9 +5,9 @@ namespace SignalRChat.Hubs
 {
     public class UdgAnketoHub : Hub
     {
-        public async Task SendMessage(string user, string message)
-        {
-            await Clients.All.SendAsync("ReceiveMessage", user, message);
-        }
+        public Task Answer(
+           string name,
+           string answerUuid
+       ) => Clients.All.SendAsync("answer", name, answerUuid);
     }
 }
