@@ -55,8 +55,6 @@ namespace udganketo.Services
                     break;
                 }
             }
-
-            // Return the item (or null if not found)
             return item;
         }
 
@@ -65,16 +63,16 @@ namespace udganketo.Services
             var query = new QueryDefinition("SELECT TOP 1 VALUE MAX(c.id) FROM c");
             var iterator = _container.GetItemQueryIterator<int>(query, requestOptions: new QueryRequestOptions
             {
-                MaxItemCount = 1 // Solo necesitamos obtener el primer elemento
+                MaxItemCount = 1
             });
 
             if (iterator.HasMoreResults)
             {
                 var result = await iterator.ReadNextAsync();
-                return result.FirstOrDefault(); // Devuelve el primer (y único) ID
+                return result.FirstOrDefault();
             }
 
-            return 0; // Si no hay resultados, devuelve 0
+            return 0;
         }
 
         public async Task InsertItemAsync(MyItem newItem)
