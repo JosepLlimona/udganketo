@@ -4,9 +4,9 @@ namespace SignalRChat.Hubs
 {
     public class ChatHub : Hub
     {
-        public Task Answer(
-           string name,
-           string answerUuid
-       ) => Clients.All.SendAsync("answer", name, answerUuid);
+        public async Task SendMessage(string user, string message)
+        {
+            await Clients.All.SendAsync("ReceiveMessage", user, message);
+        }
     }
 }
