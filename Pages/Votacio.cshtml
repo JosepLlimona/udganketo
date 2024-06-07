@@ -2,116 +2,24 @@
 @model udganketo.Pages.VotacioModel
 @{
     ViewData["Title"] = "Votació";
-    var item = Json.Serialize(@Model.item);
 }
-<h3 id="surveyQuestion"></h3>
-<p id="surveyDescription"></p>
 
-<form id="myForm">
-    
-</form>
+<h3>@Model.Item.question</h3>
+<p>@Model.Item.description</p>
 
-<div class="modal alert alert-danger fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <div>Connection Error...</div>
-                <div><strong style="font-size: 1.5em;">Hit Refresh/F5</strong> to rejoin. ;)</div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script src="~/js/signalr/dist/browser/signalr.js"></script>
-<script>
-    const survey = @Html.Raw(item);
-    generateSurvey(survey);
-
-    function generateSurvey(data) {
-        document.getElementById('surveyQuestion').innerText = data.question;
-        document.getElementById('surveyDescription').innerText = data.description;
-
-        const form = document.getElementById('myForm');
-        data.options.forEach(option => {
-            const optionHtml = `
+<form method="post">
+    @foreach (var option in Model.Item.options)
+    {
         <div class="form-check">
-            <input class="form-check-input" type="radio" name="exampleRadios" id="${option.id}" value="${option.id}">
-            <label class="form-check-label" for="${option.id}">
-                ${option.name}
+            <input class="form-check-input" type="radio" name="SelectedOptionId" id="@option.id" value="@option.id">
+            <label class="form-check-label" for="@option.id">
+                @option.name
             </label>
             <div class="progress">
-            <div class="progress-bar" role="progressbar" id="progress-${option.id}" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="progress-bar" role="progressbar" style="width: @(option.votes / (Model.Item.options.Sum(opt => opt.votes) > 0 ? Model.Item.options.Sum(opt => opt.votes) : 1) * 100)%;" aria-valuenow="@(option.votes)" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
-            <span id="count-${option.id}">${option.votes} votes</span>
-        </div>`;
-            form.insertAdjacentHTML('beforeend', optionHtml);
-        });
-        const submitButton = document.createElement('button');
-        submitButton.id = 'submit';
-        submitButton.type = 'button';
-        submitButton.classList.add('btn', 'btn-primary');
-        submitButton.style.marginTop = '20px';
-        submitButton.textContent = 'Enviar resposta';
-        form.appendChild(submitButton);
-
-        updateProgressBars(data);
+            <span>@option.votes votes</span>
+        </div>
     }
-
-    function bindConnectionMessage(connection) {
-        var answerCallback = function (answerUuid) {
-            const option = survey.options.find(opt => opt.id == answerUuid);
-            if (option) {
-                option.votes++;
-                updateProgressBars(survey);
-            }
-        };
-        connection.on("answer", answerCallback);
-        connection.onclose(onConnectionError);
-    }
-
-    function updateProgressBars(data) {
-        const totalVotes = data.options.reduce((acc, curr) => acc + curr.votes, 0);
-        data.options.forEach(option => {
-            const progress = (totalVotes > 0) ? (option.votes / totalVotes) * 100 : 0;
-            document.getElementById(`progress-${option.id}`).style.width = progress + '%';
-            document.getElementById(`count-${option.id}`).innerText = option.votes + ' votes';
-        });
-    }
-
-    function onConnected(connection) {
-        console.log("connection started");
-        connection.send("JoinRoom", survey.id);
-        document.getElementById('submit').addEventListener('click', function (event) {
-            const selectedRadio = document.querySelector('input[name="exampleRadios"]:checked');
-            if (selectedRadio) {
-                console.log("send from" + " value " + selectedRadio.value);
-                connection.send("answer", survey.id, selectedRadio.value).catch((e) => console.log(e));
-            } else {
-                alert("Please select an option.");
-            }
-        });
-    }
-
-    function onConnectionError(error) {
-        if (error && error.message) {
-            console.error(error.message);
-        }
-        var modal = document.getElementById("myModal");
-        modal.classList.add("in");
-        modal.style.display = "block";
-    }
-
-    var connection = new signalR.HubConnectionBuilder()
-        .withUrl("/udganketohub")
-        .build();
-
-    bindConnectionMessage(connection);
-    connection.start()
-        .then(function () {
-            onConnected(connection);
-        })
-        .catch(function (error) {
-            console.error(error.message);
-            onConnectionError(error);
-        });
-</script>
+    <button type="submit" class="btn btn-primary" style="margin-top: 20px;">Enviar resposta</button>
+</form>
