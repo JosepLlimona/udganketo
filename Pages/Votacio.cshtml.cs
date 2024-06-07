@@ -20,9 +20,21 @@ namespace udganketo.Pages
             item = await _cosmosDbService.SelectItemAsync(id);
         }
 
-        public async Task<IActionResult> UpdateItemAsync(MyItem updatedItem)
+        public async Task<IActionResult> UpdateItemAsync(string id, string optionId)
         {
-            await _cosmosDbService.UpdateItemAsync(updatedItem);
+
+            MyItem item = await _cosmosDbService.SelectItemAsync(id);
+
+            foreach(Options option in item.options)
+            {
+                if (option.id == optionId)
+                {
+                    option.votes++;
+                    break;
+                }
+            }
+
+            await _cosmosDbService.UpdateItemAsync(item);
 
             return RedirectToPage("/Index");
         }
