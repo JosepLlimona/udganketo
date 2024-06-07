@@ -6,7 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddScoped<CosmosDbService>();
-builder.Services.AddSignalR().AddAzureSignalR("Endpoint=https://udganketo.service.signalr.net;AccessKey=uKv5ecO35CwEUASkJhXcwuBI+6d7YjD9nbiHtNrCj4I=;Version=1.0;");
+builder.Services.AddSignalR().AddAzureSignalR(Environment.GetEnvironmentVariable("SIGNALR_CONNECTION_STRING"));
 
 var app = builder.Build();
 
