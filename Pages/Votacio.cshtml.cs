@@ -31,7 +31,8 @@ namespace udganketo.Pages
             await _hubContext.Clients.Group(id).SendAsync("updateItem", Item);
         }
 
-        public async Task<IActionResult> OnPostAsync(string id)
+        //public async Task<IActionResult> OnPostAsync(string id)
+        public async Task OnPostAsync(string id)
         {
             Item = await _cosmosDbService.SelectItemAsync(id);
 
@@ -47,7 +48,7 @@ namespace udganketo.Pages
             await _cosmosDbService.UpdateItemAsync(Item);
             await _hubContext.Clients.Group(id).SendAsync("updateItem", Item);
 
-            return RedirectToPage("/Index");
+            // return RedirectToPage("/Index");
         }
     }
 }
