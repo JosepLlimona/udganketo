@@ -87,16 +87,12 @@
                 console.log("send from" + " value " + selectedRadio.value);
                 connection.send("answer", survey.id, selectedRadio.value).then(function () {
                     // Invocar la actualización del ítem
-                    fetch(`/Votacio/OnUpdateVotes?id=${survey.id}&optionId=${selectedRadio.value}`, {
-                        method: 'POST'
-                    }).then(function (response) {
-                        if (response.ok) {
-                            console.log('Item updated successfully');
-                        } else {
-                            console.error('Failed to update item');
-                        }
-                    }).catch(function (error) {
-                        console.error('Error updating item:', error);
+                    $.ajax({
+                        type: "POST",
+                        url: "/Votacio/OnUpdateVotes?id=${survey.id}&optionId=${selectedRadio.value}",
+                        success: function (data) {
+                            console.log("ha anat be");
+                        },
                     });
                 });
             } else {
