@@ -82,7 +82,7 @@ namespace udganketo.Services
 
         public async Task UpdateItemAsync(MyItem updatedItem)
         {
-            await _container.RepalceItemAsync(updatedItem);
+            await _container.ReplaceItemAsync(updatedItem);
         }
     }
 
