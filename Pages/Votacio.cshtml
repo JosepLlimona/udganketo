@@ -100,7 +100,7 @@
                             xhr.setRequestHeader("RequestVerificationToken",
                                 $('input:hidden[name="__RequestVerificationToken"]').val());
                         },
-                        url: "/Votacio?handler=Votes",
+                        url: "/Votacio/" + survey.id + "?handler=Votes",
                         data: dataJson,
                         dataType: "json",
                         contentType: 'application/json',
