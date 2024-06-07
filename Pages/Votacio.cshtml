@@ -60,11 +60,11 @@
     function bindConnectionMessage(connection) {
         var answerCallback = function (answerUuid) {
             console.log("Arriba answerUuid1" + " " + answerUuid);
-            const option = surveyData.options.find(opt => opt.id === answerUuid);
-            console.log("Arriba answerUuid2" + " " + answerUuid + " " + option + " " + surveyData.options);
+            const option = survey.options.find(opt => opt.id == answerUuid);
+            console.log("Arriba answerUuid2" + " " + answerUuid + " " + option + " " + survey.options);
             if (option) {
                 option.votes++;
-                updateProgressBars(surveyData);
+                updateProgressBars(survey);
             }
         };
         connection.on("answer", answerCallback);
