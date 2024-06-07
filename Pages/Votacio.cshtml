@@ -87,13 +87,14 @@
                 console.log("send from" + " value " + selectedRadio.value);
                 connection.send("answer", survey.id, selectedRadio.value).then(function () {
                     // Invocar la actualización del ítem
+                    var dataJson = JSON.stringify({
+                        "id": survey.id,
+                        "optionId": selectedRadio.value,
+                    });
                     $.ajax({
                         type: "POST",
                         url: "/Votacio/OnUpdateVotes",
-                        body: new URLSearchParams({
-                            id: survey.id,
-                            optionId: selectedRadio.value
-                        }),
+                        data: dataJson,
                         success: function (data) {
                             console.log("ha anat be");
                         },
