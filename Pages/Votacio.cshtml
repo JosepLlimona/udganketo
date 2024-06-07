@@ -57,28 +57,11 @@
         updateProgressBars(data);
     }
 
-    function getUserName() {
-        function generateRandomName() {
-            return Math.random().toString(36).substring(2, 10);
-        }
-
-        var username = generateRandomName();
-        var promptMessage = "Enter your name:";
-        do {
-            username = prompt(promptMessage, username);
-            if (!username || username.startsWith("_") || username.indexOf("<") > -1 || username.indexOf(">") > -1) {
-                username = "";
-                promptMessage = "Invalid input. Enter your name:";
-            }
-        } while (!username);
-        return username;
-    }
-
-    var username = getUserName();
-
     function bindConnectionMessage(connection) {
-        var answerCallback = function (name, answerUuid) {
+        var answerCallback = function (answerUuid) {
+            console.log("Arriba answerUuid1" + " " + answerUuid);
             const option = surveyData.options.find(opt => opt.id === answerUuid);
+            console.log("Arriba answerUuid2" + " " + answerUuid + " " option + " " + surveyData.options);
             if (option) {
                 option.votes++;
                 updateProgressBars(surveyData);
@@ -99,12 +82,12 @@
 
     function onConnected(connection) {
         console.log("connection started");
-        connection.send("answer", username, "test").catch((e) => console.log(e));
+        connection.send("answer", "test").catch((e) => console.log(e));
         document.getElementById('submit').addEventListener('click', function (event) {
             const selectedRadio = document.querySelector('input[name="exampleRadios"]:checked');
             if (selectedRadio) {
-                console.log("send from " + username + " value " + selectedRadio.value);
-                connection.send("answer", username, selectedRadio.value).catch((e) => console.log(e));
+                console.log("send from" + " value " + selectedRadio.value);
+                connection.send("answer", selectedRadio.value).catch((e) => console.log(e));
             } else {
                 alert("Please select an option.");
             }
