@@ -85,7 +85,20 @@
             const selectedRadio = document.querySelector('input[name="exampleRadios"]:checked');
             if (selectedRadio) {
                 console.log("send from" + " value " + selectedRadio.value);
-                connection.send("answer", survey.id, selectedRadio.value).catch((e) => console.log(e));
+                connection.send("answer", survey.id, selectedRadio.value).then(function () {
+                    // Invocar la actualización del ítem
+                    fetch(`/Votacio?id=${survey.id}&optionId=${selectedRadio.value}`, {
+                        method: 'POST'
+                    }).then(function (response) {
+                        if (response.ok) {
+                            console.log('Item updated successfully');
+                        } else {
+                            console.error('Failed to update item');
+                        }
+                    }).catch(function (error) {
+                        console.error('Error updating item:', error);
+                    });
+                });
             } else {
                 alert("Please select an option.");
             }

@@ -20,7 +20,7 @@ namespace udganketo.Pages
             item = await _cosmosDbService.SelectItemAsync(id);
         }
 
-        public async Task<IActionResult> UpdateItemAsync(string id, string optionId)
+        public async Task<IActionResult> OnPostUpdateItemAsync(string id, string optionId)
         {
 
             MyItem item = await _cosmosDbService.SelectItemAsync(id);
