@@ -6,7 +6,6 @@ namespace udganketo.Pages
 {
     public class ChatModel : PageModel, IAsyncDisposable
     {
-        private readonly NavigationManager _navigation;
         private HubConnection _hubConnection;
 
         public List<string> Messages { get; private set; } = new List<string>();
@@ -14,15 +13,11 @@ namespace udganketo.Pages
         public string MessageInput { get; set; }
         public bool IsConnected => _hubConnection?.State == HubConnectionState.Connected;
 
-        public ChatModel(NavigationManager navigation)
-        {
-            _navigation = navigation;
-        }
-
+     
         public async Task OnGetAsync()
         {
             _hubConnection = new HubConnectionBuilder()
-                .WithUrl(_navigation.ToAbsoluteUri("/chathub"))
+                .WithUrl("/chathub")
                 .Build();
 
             _hubConnection.On<string, string>("ReceiveMessage", (user, message) =>
