@@ -39,6 +39,28 @@ namespace udganketo.Services
             return items;
         }
 
+        public async Task<MyItem> SelectItemAsync(string id)
+        {
+            var sqlQueryText = "SELECT * FROM c WHERE c.id = @id";
+            QueryDefinition queryDefinition = new QueryDefinition(sqlQueryText).WithParameter("@id", id);
+            FeedIterator<MyItem> queryResultSetIterator = _container.GetItemQueryIterator<MyItem>(queryDefinition);
+
+            MyItem item = null;
+
+            while (queryResultSetIterator.HasMoreResults)
+            {
+                FeedResponse<MyItem> currentResultSet = await queryResultSetIterator.ReadNextAsync();
+                if (currentResultSet.Count > 0)
+                {
+                    item = currentResultSet.FirstOrDefault();
+                    break;
+                }
+            }
+
+            // Return the item (or null if not found)
+            return item;
+        }
+
         public async Task<int> GetLastItemIdAsync()
         {
             var query = new QueryDefinition("SELECT TOP 1 VALUE MAX(c.id) FROM c");

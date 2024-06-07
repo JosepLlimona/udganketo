@@ -1,0 +1,17 @@
+﻿@page "{id}"
+@model udganketo.Pages.VotacioModel
+@{
+    ViewData["Title"] = "Votació";
+}
+
+<h1>@Model.item.title</h1>
+<p>@Model.item.description<\p>
+<p>@Model.item.question<\p>
+<div>
+    <ul>
+                        @foreach (var option in Model.item.options)
+                        {
+                            <li>@option.name</li>
+                        }
+                    </ul>
+</div>

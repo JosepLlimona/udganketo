@@ -13,11 +13,7 @@
     <ul>
         @foreach (var item in Model.Items)
         {
-            <li>@item.title - @item.question</li>
-            @foreach (var option in item.options)
-            {
-                <li>-@option.name = @option.votes</li>
-            }
+                <li><a asp-asp-page="/Votacio" asp-route-id="@item.id">@item.title - @item.question</a></li>
         }
     </ul>
 </div>
