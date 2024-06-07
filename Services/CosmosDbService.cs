@@ -82,17 +82,7 @@ namespace udganketo.Services
 
         public async Task UpdateItemAsync(MyItem updatedItem)
         {
-            MyItem existingItem = await SelectItemAsync(updatedItem.id);
-
-            if(existingItem != null)
-            {
-                existingItem.title = updatedItem.title;
-                existingItem.description = updatedItem.description;
-                existingItem.question = updatedItem.question;
-                existingItem.options = updatedItem.options;
-
-                await _container.UpdateItemAsync(existingItem, existingItem.id);
-            }
+            await _container.RepalceItemAsync(updatedItem);
         }
     }
 
