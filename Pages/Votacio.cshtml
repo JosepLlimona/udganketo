@@ -61,7 +61,7 @@
         var answerCallback = function (answerUuid) {
             console.log("Arriba answerUuid1" + " " + answerUuid);
             const option = surveyData.options.find(opt => opt.id === answerUuid);
-            console.log("Arriba answerUuid2" + " " + answerUuid + " " option + " " + surveyData.options);
+            console.log("Arriba answerUuid2" + " " + answerUuid + " " + option + " " + surveyData.options);
             if (option) {
                 option.votes++;
                 updateProgressBars(surveyData);
