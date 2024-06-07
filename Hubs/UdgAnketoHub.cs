@@ -7,9 +7,8 @@ namespace SignalRChat.Hubs
     {
         public async Task Answer(
            string answerUuid
-        )
-        {
+        ) {
             await Clients.All.SendAsync("answer", answerUuid);
-        }1
+        }
     }
 }
