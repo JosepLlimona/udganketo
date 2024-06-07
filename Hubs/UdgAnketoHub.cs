@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.SignalR;
-
+using System.Threading.Tasks;
 
 namespace SignalRChat.Hubs
 {
@@ -9,14 +9,10 @@ namespace SignalRChat.Hubs
         {
             await Groups.AddToGroupAsync(Context.ConnectionId, anketoUuid);
         }
+
         public async Task LeaveRoom(string anketoUuid)
         {
             await Groups.RemoveFromGroupAsync(Context.ConnectionId, anketoUuid);
-        }
-
-        public async Task Answer(string anketoUuid, string answerUuid) 
-        {
-            await Clients.Group(anketoUuid).SendAsync("answer", answerUuid);
         }
     }
 }

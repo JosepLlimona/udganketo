@@ -16,10 +16,33 @@
                 @option.name
             </label>
             <div class="progress">
-                <div class="progress-bar" role="progressbar" style="width: @(option.votes / (Model.Item.options.Sum(opt => opt.votes) > 0 ? Model.Item.options.Sum(opt => opt.votes) : 1) * 100)%;" aria-valuenow="@(option.votes)" aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="progress-bar" role="progressbar" id="progress-@option.id" style="width: @(option.votes / (Model.Item.options.Sum(opt => opt.votes) > 0 ? Model.Item.options.Sum(opt => opt.votes) : 1) * 100)%;" aria-valuenow="@(option.votes)" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
-            <span>@option.votes votes</span>
+            <span id="count-@option.id">@option.votes votes</span>
         </div>
     }
     <button type="submit" class="btn btn-primary" style="margin-top: 20px;">Enviar resposta</button>
 </form>
+
+<script src="~/js/signalr/dist/browser/signalr.js"></script>
+<script>
+    var connection = new signalR.HubConnectionBuilder()
+        .withUrl("/udganketohub")
+        .build();
+
+    connection.on("updateItem", function (item) {
+        item.options.forEach(option => {
+            const progress = (item.options.reduce((acc, curr) => acc + curr.votes, 0) > 0)
+                ? (option.votes / item.options.reduce((acc, curr) => acc + curr.votes, 0)) * 100
+                : 0;
+            document.getElementById(`progress-${option.id}`).style.width = progress + '%';
+            document.getElementById(`count-${option.id}`).innerText = option.votes + ' votes';
+        });
+    });
+
+    connection.start().then(function () {
+        connection.send("JoinRoom", "@Model.Item.id");
+    }).catch(function (err) {
+        console.error(err.toString());
+    });
+</script>
