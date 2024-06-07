@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Diagnostics;
 using udganketo.Services;
 using static udganketo.Pages.VotacioModel;
 
@@ -28,14 +29,14 @@ namespace udganketo.Pages
             public string optionId { get; set; }
         }
 
-        public async Task<IActionResult> OnPost([FromBody] PostRequestModel viewModel)
+        public async Task<IActionResult> OnPost([FromBody] PostRequestModel postRequestModel)
         {
-
-            MyItem item = await _cosmosDbService.SelectItemAsync(viewModel.id);
+            Trace.WriteLine("Entra " + " " + postRequestModel.id + " " + postRequestModel.optionId);
+            MyItem item = await _cosmosDbService.SelectItemAsync(postRequestModel.id);
 
             foreach (Options option in item.options)
             {
-                if (option.id == viewModel.optionId)
+                if (option.id == postRequestModel.optionId)
                 {
                     option.votes++;
                     break;

@@ -92,13 +92,16 @@
                         "id": survey.id,
                         "optionId": selectedRadio.value,
                     });
-                    fetch("/", {
-                        method: "POST",
-                        body: dataJson,
-                        headers: {
-                            'RequestVerificationToken': document.getElementsByName("__RequestVerificationToken")[0].value,
-                            'Accept': "*/*",
-                            'Content-Type': 'application/json'
+                    $.ajax({
+                        type: "POST",
+                        beforeSend: function (xhr) {
+                            xhr.setRequestHeader("XSRF-TOKEN",
+                                $('input:hidden[name="__RequestVerificationToken"]').val());
+                        },
+                        url: "/",
+                        data: requestData,
+                        success: function (data) {
+                            console.log(data);
                         }
                     });
                 });
