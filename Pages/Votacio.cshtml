@@ -97,8 +97,10 @@
                         beforeSend: function (xhr) {
                             xhr.setRequestHeader("XSRF-TOKEN",
                                 $('input:hidden[name="__RequestVerificationToken"]').val());
+                            xhr.setRequestHeader("RequestVerificationToken",
+                                $('input:hidden[name="__RequestVerificationToken"]').val());
                         },
-                        url: "/?handler=Votes",
+                        url: "/Votacio?handler=Votes",
                         data: dataJson,
                         dataType: "json",
                         contentType: 'application/json',
