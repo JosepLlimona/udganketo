@@ -80,7 +80,7 @@
 
     function onConnected(connection) {
         console.log("connection started");
-        connection.invoke("JoinGroup", survey.id);
+        connection.send("JoinRoom", survey.id);
         document.getElementById('submit').addEventListener('click', function (event) {
             const selectedRadio = document.querySelector('input[name="exampleRadios"]:checked');
             if (selectedRadio) {
