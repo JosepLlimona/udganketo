@@ -89,7 +89,11 @@
                     // Invocar la actualización del ítem
                     $.ajax({
                         type: "POST",
-                        url: "/Votacio/OnUpdateVotes?id=${survey.id}&optionId=${selectedRadio.value}",
+                        url: "/Votacio/OnUpdateVotes",
+                        body: new URLSearchParams({
+                            id: survey.id,
+                            optionId: selectedRadio.value
+                        },
                         success: function (data) {
                             console.log("ha anat be");
                         },
