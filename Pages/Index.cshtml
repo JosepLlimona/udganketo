@@ -13,7 +13,7 @@
     <ul>
         @foreach (var item in Model.Items)
         {
-                <li><a asp-asp-page="/Votacio" asp-route-id="@item.id">@item.title - @item.question</a></li>
+                <li><a asp-page="/Votacio" asp-route-id="@item.id">@item.title - @item.question</a></li>
         }
     </ul>
 </div>
