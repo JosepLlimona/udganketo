@@ -54,4 +54,4 @@ jobs:
           app-name: 'udganketo'
           slot-name: 'Production'
           package: .
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_FE7E513EE0B04529930A47F9BD58B1E0 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_F5D1B29D12E746C095784F1D2FC2FE4B }}
